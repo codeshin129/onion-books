@@ -7,6 +7,10 @@ docker based application sample.
 - `postgres` database 
 - `typescript` && `express` app server
 
+### install
+```bash
+npm install
+```
 ### start
 ```bash
 docker-compose up
