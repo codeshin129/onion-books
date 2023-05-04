@@ -4,7 +4,6 @@ import { Presenter } from '../Presenter';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 import { AddBookUseCase } from '../../UseCase';
-import { AddBookRepository } from '../../Infra/Repository';
 
 export class AddBookController {
   constructor(private readonly addBookUseCase: AddBookUseCase) {}
@@ -22,8 +21,6 @@ export class AddBookController {
           return;
         }
       });
-
-      const addBookRepository = new AddBookRepository();
 
       const id = await this.addBookUseCase.execute(input);
 
