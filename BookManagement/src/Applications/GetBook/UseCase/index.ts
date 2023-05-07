@@ -1,5 +1,5 @@
 import { IGetBookRepository } from '../Database/IRepository';
-import { Book } from '../Domain/Book';
+import { Book } from '../../../Domains/Book';
 
 export class GetBookUseCase {
   constructor(private readonly IGetBookRepository: IGetBookRepository) {}
