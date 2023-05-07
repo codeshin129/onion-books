@@ -1,12 +1,10 @@
 import express from 'express';
 import { connectToDB } from './Database';
-import { AddBookRepository } from './Applications/AddBook/Infra/Repository';
+import { BookRepository } from './Database/Book';
 import { AddBookController } from './Applications/AddBook/Presentation/Controller';
 import { AddBookUseCase } from './Applications/AddBook/UseCase';
-import { GetBookRepository } from './Applications/GetBook/Infra/Repository';
 import { GetBookController } from './Applications/GetBook/Presentation/Controller';
 import { GetBookUseCase } from './Applications/GetBook/UseCase';
-import { GetBooksRepository } from './Applications/GetBooks/Infra/Repository';
 import { GetBooksController } from './Applications/GetBooks/Presentation/Controller';
 import { GetBooksUseCase } from './Applications/GetBooks/UseCase';
 
@@ -15,16 +13,14 @@ app.use(express.json());
 
 connectToDB();
 
-const addBookRepository = new AddBookRepository();
-const addBookUseCase = new AddBookUseCase(addBookRepository);
+const bookRepository = new BookRepository();
+const addBookUseCase = new AddBookUseCase(bookRepository);
 const addBookController = new AddBookController(addBookUseCase);
 
-const getBookRepository = new GetBookRepository();
-const getBookUseCase = new GetBookUseCase(getBookRepository);
+const getBookUseCase = new GetBookUseCase(bookRepository);
 const getBookController = new GetBookController(getBookUseCase);
 
-const getBooksRepository = new GetBooksRepository();
-const getBooksUseCase = new GetBooksUseCase(getBooksRepository);
+const getBooksUseCase = new GetBooksUseCase(bookRepository);
 const getBooksController = new GetBooksController(getBooksUseCase);
 
 app.get('/books', async (req, res) => {

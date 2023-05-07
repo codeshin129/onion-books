@@ -1,4 +1,4 @@
-import { Book } from '../Domain/Book';
+import { Book } from '../../../Domains/Book';
 
 export interface IGetBooksRepository {
   getBooks: () => Promise<Book[]>;

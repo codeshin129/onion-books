@@ -1,5 +1,5 @@
 import { IAddBookRepository } from '../Database/IRepository';
-import { Book } from '../Domain/Book';
+import { Book } from '../../../Domains/Book';
 
 export class AddBookUseCase {
   constructor(private readonly IAddBookRepository: IAddBookRepository) {}
